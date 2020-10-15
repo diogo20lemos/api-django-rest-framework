@@ -6,6 +6,8 @@ from escola.views import (
     AlunosViewSet, 
     CursosViewSet, 
     MatriculaViewSet,
+    ListaMatriculaAluno,
+    ListaAlunosMatriculados,
 ) 
 
 router = routers.DefaultRouter()
@@ -17,5 +19,8 @@ router.register('matriculas', MatriculaViewSet, basename='Matriculas')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('aluno/<int:pk>/matriculas', ListaMatriculaAluno.as_view()),
+    path('curso/<int:pk>/matriculas', ListaAlunosMatriculados.as_view()),
+
 
 ]
